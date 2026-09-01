@@ -82,9 +82,13 @@ export default function Navbar({ onOpenAuth, activeNav, setActiveNav }) {
               <a 
                 href="#" 
                 onClick={(e) => { e.preventDefault(); handleNavClick('home'); }}
-                className="text-2xl sm:text-[26px] font-black tracking-tight text-slate-900 hover:opacity-90 transition cursor-pointer flex items-center space-x-1"
+                className="flex items-center space-x-2.5 hover:opacity-90 transition cursor-pointer py-1"
               >
-                <span>Yatra<span className="text-[#ea580c]">Care</span></span>
+                <img 
+                  src="/images/logo.png" 
+                  alt="YatraCare" 
+                  className="h-12 sm:h-14 w-auto object-contain"
+                />
               </a>
             </div>
 

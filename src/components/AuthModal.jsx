@@ -48,6 +48,11 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login' }) {
         ) : (
           <>
             <div className="text-center mb-6">
+              <img 
+                src="/images/logo.png" 
+                alt="YatraCare" 
+                className="h-12 w-auto mx-auto mb-2 object-contain"
+              />
               <h3 className="text-2xl font-bold text-slate-900">
                 {mode === 'login' ? 'Welcome to YatraCare' : 'Begin Your Journey'}
               </h3>

@@ -27,10 +27,17 @@ export default function Footer({ onCategoryClick }) {
           
           {/* Brand & Copyright Column */}
           <div className="md:col-span-4 lg:col-span-4 space-y-4">
-            <a href="#" className="text-2xl font-black tracking-tight text-slate-900 inline-block">
-              Yatra<span className="text-slate-900">Care</span>
+            <a href="#" className="inline-block">
+              <img 
+                src="/images/logo.png" 
+                alt="YatraCare - Your Journey, Our Care" 
+                className="h-16 w-auto object-contain"
+              />
             </a>
-            <p className="text-sm text-slate-600 leading-relaxed max-w-xs">
+            <p className="text-xs text-slate-600 leading-relaxed max-w-xs">
+              Premium travel experiences, luxury vehicle fleet, verified local guides, and 24/7 tourist support across the Indian subcontinent.
+            </p>
+            <p className="text-xs font-semibold text-slate-500">
               © 2024 YatraCare International Tourism. All rights reserved.
             </p>
           </div>
@@ -47,7 +54,7 @@ export default function Footer({ onCategoryClick }) {
                     <li key={idx}>
                       <button
                         onClick={() => onCategoryClick && onCategoryClick(link)}
-                        className="text-slate-600 hover:text-slate-900 transition-colors text-left"
+                        className="text-slate-600 hover:text-slate-900 transition-colors text-left cursor-pointer"
                       >
                         {link}
                       </button>
