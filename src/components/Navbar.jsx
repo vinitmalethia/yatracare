@@ -8,7 +8,6 @@ export default function Navbar({ onOpenAuth, activeNav, setActiveNav }) {
     { label: 'Home', id: 'home' },
     { label: 'Explore India', id: 'explore' },
     { label: 'Tour Packages', id: 'packages' },
-    { label: 'Fleet & Cabs', id: 'fleet' },
     { label: 'Hotels', id: 'hotels' },
     { label: 'Travel', id: 'travel' },
     { label: 'Guides', id: 'guides' },
@@ -23,12 +22,6 @@ export default function Navbar({ onOpenAuth, activeNav, setActiveNav }) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       setTimeout(() => {
         const el = document.getElementById('explore-india-section');
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
-    } else if (id === 'fleet') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      setTimeout(() => {
-        const el = document.getElementById('fleet-section');
         if (el) el.scrollIntoView({ behavior: 'smooth' });
       }, 100);
     } else if (id === 'home' || id === 'packages' || id === 'portal' || id === 'guides' || id === 'travel' || id === 'hotels') {
@@ -78,7 +71,7 @@ export default function Navbar({ onOpenAuth, activeNav, setActiveNav }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <div className="flex items-center">
+            <div className="flex items-center shrink-0">
               <a 
                 href="#" 
                 onClick={(e) => { e.preventDefault(); handleNavClick('home'); }}
@@ -92,15 +85,15 @@ export default function Navbar({ onOpenAuth, activeNav, setActiveNav }) {
               </a>
             </div>
 
-            {/* Center Navigation Links (Desktop) */}
-            <nav className="hidden lg:flex items-center space-x-5 xl:space-x-7">
+            {/* Center Navigation Links (Desktop) - No text wrap */}
+            <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
               {navItems.map((item) => {
                 const isActive = activeNav === item.id;
                 return (
                   <button
                     key={item.id}
                     onClick={() => handleNavClick(item.id)}
-                    className={`text-[14px] xl:text-[15px] font-medium py-1 transition-colors relative cursor-pointer ${
+                    className={`text-[15px] font-medium py-1 transition-colors relative cursor-pointer whitespace-nowrap ${
                       isActive 
                         ? 'text-slate-900 font-bold' 
                         : 'text-slate-600 hover:text-slate-900'
@@ -116,10 +109,10 @@ export default function Navbar({ onOpenAuth, activeNav, setActiveNav }) {
             </nav>
 
             {/* Right Action Buttons */}
-            <div className="hidden md:flex items-center space-x-3">
+            <div className="hidden md:flex items-center space-x-3 shrink-0">
               <button
                 onClick={() => handleNavClick('portal')}
-                className="flex items-center space-x-2 px-3.5 py-1.5 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 text-xs font-semibold text-slate-800 transition cursor-pointer"
+                className="flex items-center space-x-2 px-3.5 py-1.5 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 text-xs font-semibold text-slate-800 transition cursor-pointer whitespace-nowrap"
                 title="Open Tourist Portal"
               >
                 <img
@@ -132,13 +125,13 @@ export default function Navbar({ onOpenAuth, activeNav, setActiveNav }) {
 
               <button
                 onClick={() => onOpenAuth('login')}
-                className="px-4 py-2 text-sm font-semibold text-slate-800 bg-[#e2e8f0]/60 hover:bg-[#cbd5e1]/60 border border-slate-700/80 rounded-md transition-all shadow-xs cursor-pointer"
+                className="px-4 py-2 text-sm font-semibold text-slate-800 bg-[#e2e8f0]/60 hover:bg-[#cbd5e1]/60 border border-slate-700/80 rounded-md transition-all shadow-xs cursor-pointer whitespace-nowrap"
               >
                 Login
               </button>
               <button
                 onClick={() => onOpenAuth('signup')}
-                className="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-[#d97706] to-[#ea580c] hover:from-[#b45309] hover:to-[#c2410c] rounded-md transition-all shadow-sm active:scale-95 cursor-pointer"
+                className="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-[#d97706] to-[#ea580c] hover:from-[#b45309] hover:to-[#c2410c] rounded-md transition-all shadow-sm active:scale-95 cursor-pointer whitespace-nowrap"
               >
                 Get Started
               </button>
