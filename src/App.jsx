@@ -5,13 +5,16 @@ import SearchBar from './components/SearchBar';
 import ExploreIndia from './components/ExploreIndia';
 import ExploreIndiaPage from './components/ExploreIndiaPage';
 import FeaturedPackagesSection from './components/FeaturedPackagesSection';
+import VehicleFleetSection from './components/VehicleFleetSection';
 import WhyChooseUs from './components/WhyChooseUs';
+import TrustAccreditations from './components/TrustAccreditations';
 import TourPackagesPage from './components/TourPackagesPage';
 import PackageDetailPage from './components/PackageDetailPage';
 import LocalGuidesPage from './components/LocalGuidesPage';
 import TravelTransportPage from './components/TravelTransportPage';
 import HotelsPage from './components/HotelsPage';
 import TouristPortal from './components/TouristPortal';
+import WhatsAppFloatingButton from './components/WhatsAppFloatingButton';
 import Footer from './components/Footer';
 import AuthModal from './components/AuthModal';
 import DestinationDetailModal from './components/DestinationDetailModal';
@@ -47,15 +50,26 @@ export default function App() {
   const handleNavClick = (navId) => {
     setSelectedPackageDetail(null);
     setActiveNav(navId);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    if (navId === 'fleet') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(() => {
+        const el = document.getElementById('fleet-section');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   const handleSearch = (searchData) => {
-    setSearchNotification(`Searching journeys for "${searchData.destination}" (${searchData.travellers}, ${searchData.dates})...`);
+    const query = `${searchData.pickup || 'Delhi'} to ${searchData.destination || 'India'} (${searchData.vehicle || 'Innova Crysta'}, ${searchData.tripType || 'One-way'})`;
+    setSearchNotification(`Calculating verified fares for ${query}...`);
+    
     setTimeout(() => {
       setSearchNotification(null);
       
-      const searchLower = searchData.destination.toLowerCase();
+      const searchLower = (searchData.destination || '').toLowerCase();
       const matchedPkg = packages.find(p =>
         p.title.toLowerCase().includes(searchLower) ||
         p.places.toLowerCase().includes(searchLower)
@@ -75,9 +89,9 @@ export default function App() {
       if (matchedDest) {
         setSelectedDestination(matchedDest);
       } else {
-        setSelectedPackageDetail(null);
-        setActiveNav('packages');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Scroll to Fleet Section
+        const el = document.getElementById('fleet-section');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
       }
     }, 1000);
   };
@@ -143,18 +157,21 @@ export default function App() {
   // If on Tourist Portal view
   if (activeNav === 'portal') {
     return (
-      <TouristPortal
-        onBackToHome={() => handleNavClick('home')}
-        onOpenSupport={() => handleOpenAuth('login')}
-      />
+      <div className="relative">
+        <TouristPortal
+          onBackToHome={() => handleNavClick('home')}
+          onOpenSupport={() => handleOpenAuth('login')}
+        />
+        <WhatsAppFloatingButton />
+      </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-white flex flex-col font-sans selection:bg-amber-100 selection:text-amber-900">
+    <div className="min-h-screen bg-white flex flex-col font-sans selection:bg-amber-100 selection:text-amber-900 relative">
       {/* Search Toast / Notification */}
       {searchNotification && (
-        <div className="fixed top-24 left-1/2 transform -translate-x-1/2 z-50 bg-slate-900 text-white px-6 py-3 rounded-full shadow-2xl text-sm font-medium flex items-center space-x-2 animate-bounce">
+        <div className="fixed top-24 left-1/2 transform -translate-x-1/2 z-50 bg-[#0F172A] text-white px-6 py-3 rounded-full shadow-2xl text-sm font-medium flex items-center space-x-2 animate-bounce border border-slate-700">
           <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse"></span>
           <span>{searchNotification}</span>
         </div>
@@ -226,7 +243,7 @@ export default function App() {
               }}
             />
 
-            {/* Floating Search Bar */}
+            {/* Floating Interactive Booking / Search Bar */}
             <SearchBar onSearch={handleSearch} />
 
             {/* Explore India Section */}
@@ -252,10 +269,20 @@ export default function App() {
               }}
             />
 
+            {/* Vehicle Fleet Showcase Section */}
+            <VehicleFleetSection
+              onBookVehicle={(veh) => {
+                alert(`Direct booking initiated for ${veh.name}. Opening instant reservation.`);
+              }}
+            />
+
             {/* Featured Tour Packages Section */}
             <FeaturedPackagesSection
               onSelectPackage={handleSelectPackage}
             />
+
+            {/* Trust, Accreditations & Transparent Pricing */}
+            <TrustAccreditations />
 
             {/* Why Choose Us & Testimonials */}
             <WhyChooseUs
@@ -264,6 +291,9 @@ export default function App() {
           </>
         )}
       </main>
+
+      {/* Global Sticky WhatsApp Floating Button */}
+      <WhatsAppFloatingButton />
 
       {/* Footer */}
       <Footer
