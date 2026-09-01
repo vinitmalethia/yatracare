@@ -30,8 +30,8 @@ export default function Footer({ onCategoryClick }) {
             <a href="#" className="inline-block">
               <img 
                 src="/images/logo.png" 
-                alt="YatraCare - Your Journey, Our Care" 
-                className="h-20 sm:h-24 w-auto object-contain drop-shadow-2xs"
+                alt="YatraCare" 
+                className="h-12 sm:h-14 w-auto object-contain max-w-[220px]"
               />
             </a>
             <p className="text-xs text-slate-600 leading-relaxed max-w-xs">

@@ -76,18 +76,18 @@ export default function Navbar({ onOpenAuth, activeNav, setActiveNav }) {
       {/* MAIN NAVIGATION BAR */}
       <div className="bg-white/95 backdrop-blur-md border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20 sm:h-24">
+          <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <div className="flex items-center">
               <a 
                 href="#" 
                 onClick={(e) => { e.preventDefault(); handleNavClick('home'); }}
-                className="flex items-center hover:opacity-95 transition cursor-pointer py-1"
+                className="flex items-center hover:opacity-90 transition cursor-pointer py-1"
               >
                 <img 
                   src="/images/logo.png" 
-                  alt="YatraCare - Your Journey, Our Care" 
-                  className="h-14 sm:h-16 md:h-18 max-h-[72px] w-auto object-contain drop-shadow-2xs"
+                  alt="YatraCare" 
+                  className="h-10 sm:h-12 w-auto object-contain max-w-[190px] sm:max-w-[220px]"
                 />
               </a>
             </div>

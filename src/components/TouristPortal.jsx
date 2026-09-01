@@ -53,7 +53,7 @@ export default function TouristPortal({ onBackToHome, onOpenSupport }) {
               <img 
                 src="/images/logo.png" 
                 alt="YatraCare Tourist Portal" 
-                className="h-14 sm:h-16 w-auto object-contain"
+                className="h-9 sm:h-10 w-auto object-contain max-w-[170px]"
               />
             </button>
           </div>
