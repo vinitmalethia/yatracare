@@ -31,7 +31,7 @@ export default function Footer({ onCategoryClick }) {
               <img 
                 src="/images/logo.png" 
                 alt="YatraCare - Your Journey, Our Care" 
-                className="h-16 w-auto object-contain"
+                className="h-20 sm:h-24 w-auto object-contain drop-shadow-2xs"
               />
             </a>
             <p className="text-xs text-slate-600 leading-relaxed max-w-xs">

@@ -45,7 +45,7 @@ export default function TouristPortal({ onBackToHome, onOpenSupport }) {
       <aside className="w-full md:w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0">
         <div>
           {/* Brand Header */}
-          <div className="p-5 border-b border-slate-100 flex items-center justify-between">
+          <div className="p-4 sm:p-5 border-b border-slate-100 flex items-center justify-between">
             <button 
               onClick={onBackToHome}
               className="hover:opacity-90 transition text-left cursor-pointer"
@@ -53,7 +53,7 @@ export default function TouristPortal({ onBackToHome, onOpenSupport }) {
               <img 
                 src="/images/logo.png" 
                 alt="YatraCare Tourist Portal" 
-                className="h-12 w-auto object-contain"
+                className="h-14 sm:h-16 w-auto object-contain"
               />
             </button>
           </div>
